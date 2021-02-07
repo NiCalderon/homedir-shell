@@ -3,3 +3,8 @@
 - name: Print message
   debug:
     msg: shell config {{ shell }}
+
+- name: .profile base
+  copy:
+    src: profile.sh
+    dest: $HOME/.profile

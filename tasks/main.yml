@@ -8,3 +8,8 @@
   copy:
     src: profile.sh
     dest: $HOME/.profile
+
+- name: Install zsh
+  package:
+    name: zsh
+    state: present

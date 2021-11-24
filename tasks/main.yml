@@ -1,5 +1,11 @@
 ---
 # tasks file for homedir-shell
-- name: Include {{ shell }} module
-  import_role:
-    name: homedir-{{ shell }}
+- name: Set {{ shell }} as default shell
+  command:
+    cmd: chsh
+    argv:
+      shell:
+        - --shell
+        - $(which {{ shell }})
+        - $USER
+  become: yes

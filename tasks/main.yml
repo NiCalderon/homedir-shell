@@ -2,9 +2,5 @@
 # tasks file for homedir-shell
 - name: Set {{ shell }} as default shell
   command:
-    cmd: chsh
-    argv:
-        - --shell
-        - $(which {{ shell }})
-        - $USER
+    cmd: chsh --shell $(which {{ shell }}) $USER
   become: yes

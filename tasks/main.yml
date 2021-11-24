@@ -1,11 +1,5 @@
 ---
 # tasks file for homedir-shell
-- name: Print message
-  debug:
-    msg: shell config {{ shell }}
-
-- name: Install zsh
-  package:
-    name: zsh
-    state: present
-  become: yes
+- name: Include {{ shell }} module
+  import_role:
+    name: homedir-{{ shell }}

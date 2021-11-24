@@ -4,7 +4,6 @@
   command:
     cmd: chsh
     argv:
-      shell:
         - --shell
         - $(which {{ shell }})
         - $USER

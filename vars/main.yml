@@ -1,3 +1,4 @@
 ---
 # vars file for homedir-shell
 shell: bash 
+user: {{ ansible_env.USER }}

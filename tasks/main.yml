@@ -1,6 +1,6 @@
 ---
 # tasks file for homedir-shell
-- name: Set {{ shell }} as default shell
+- name: Set default shell to {{ shell }} for {{ user }}
   shell:
-    cmd: chsh --shell $(which {{ shell }}) $USER
+    cmd: usermod --shell $(which {{ shell }}) {{ user }}
   become: yes

@@ -1,6 +1,15 @@
 ---
 # tasks file for homedir-shell
+- name: Retrieve shell for {{ user }}
+  shell:
+    cmd: "getent passwd {{ user }} | awk -F: '{print $NF}'"
+  register: current_shell
+  # Avoid change notifications
+  changed_when: false
+
 - name: Set default shell to {{ shell }} for user {{ user }}
   shell:
     cmd: usermod --shell $(which {{ shell }}) {{ user }}
   become: yes
+  # Avoid changes when current shell is already set properly
+  when: "shell not in current_shell.stdout"
